@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byron González Calquín — Full Stack Developer</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-alt: #161b22;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --border: #30363d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 64px 20px; }
+  header { text-align: center; margin-bottom: 56px; }
+  header h1 { font-size: 2rem; margin-bottom: 6px; }
+  header p.role { color: var(--accent); font-size: 1.1rem; margin-bottom: 4px; }
+  header p.loc { color: var(--text-dim); font-size: 0.95rem; }
+  .links { margin-top: 18px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .links a {
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  section { margin-bottom: 48px; }
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .skill-cat { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+  .skill-cat h3 { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .skill-cat p { font-size: 0.92rem; }
+  .projects { display: grid; gap: 16px; }
+  .project {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .project h3 { font-size: 1rem; margin-bottom: 6px; }
+  .project p { color: var(--text-dim); font-size: 0.92rem; }
+  footer { text-align: center; color: var(--text-dim); font-size: 0.85rem; padding-top: 24px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Byron Rodrigo González Calquín</h1>
+    <p class="role">Full Stack Developer</p>
+    <p class="loc">Santiago, Chile</p>
+    <div class="links">
+      <a href="https://github.com/perroBlanco0">GitHub</a>
+      <a href="mailto:byrongonzalez.calquin@gmail.com">Email</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Sobre mí</h2>
+    <p>Desarrollador full stack con experiencia a lo largo de todo el stack tecnológico: APIs backend, interfaces frontend, bases de datos y despliegue en la nube. Trabajo con Python/FastAPI, PHP, React, Docker y arquitecturas cloud en AWS.</p>
+  </section>
+
+  <section>
+    <h2>Stack técnico</h2>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>Backend</h3>
+        <p>Python (FastAPI), PHP, Node.js</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Frontend</h3>
+        <p>React, HTML5, CSS3</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Mobile</h3>
+        <p>Capacitor, Flutter, iOS/Android</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Cloud &amp; DevOps</h3>
+        <p>AWS (EC2, ALB, Auto Scaling), Docker</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Datos</h3>
+        <p>SQL Server, MySQL, Power BI, Pandas</p>
+      </div>
+      <div class="skill-cat">
+        <h3>IA</h3>
+        <p>Integración con OpenAI y Gemini APIs</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Proyectos destacados</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>LLM Context Builder</h3>
+        <p>Extensión de VS Code publicada en el Marketplace que convierte archivos en contextos Markdown limpios para herramientas de IA.</p>
+      </div>
+      <div class="project">
+        <h3>Arquitecturas AWS</h3>
+        <p>Monolitos escalables, aplicaciones serverless y sistemas de mensajería (SNS/SQS).</p>
+      </div>
+      <div class="project">
+        <h3>Dashboards BI</h3>
+        <p>Analítica con Power BI sobre pipelines de datos en SQL Server.</p>
+      </div>
+      <div class="project">
+        <h3>Extensión de Chrome</h3>
+        <p>Agente de análisis visual con IA e integración con Telegram.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Byron González Calquín
+  </footer>
+
+</div>
+</body>
+</html>
