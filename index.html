@@ -7,221 +7,257 @@
 <style>
   :root {
     --bg: #ffffff;
-    --bg-alt: #f5f5f7;
+    --panel: #f5f5f7;
+    --sidebar: #f0f2f5;
+    --sidebar-text: #1d1d1f;
+    --sidebar-dim: #6e6e73;
     --text: #1d1d1f;
     --text-dim: #6e6e73;
     --accent: #0071e3;
     --border: #d2d2d7;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #000000;
-      --bg-alt: #1d1d1f;
-      --text: #f5f5f7;
-      --text-dim: #86868b;
-      --accent: #2997ff;
-      --border: #424245;
-    }
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.5;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  .section { padding: 120px 24px; }
-  .section-alt { background: var(--bg-alt); }
-  .inner { max-width: 980px; margin: 0 auto; }
-  .inner-narrow { max-width: 700px; margin: 0 auto; }
 
-  /* Hero */
-  .hero { text-align: center; padding: 160px 24px 120px; }
-  .hero .eyebrow {
-    color: var(--accent);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    letter-spacing: -0.01em;
+  .page {
+    max-width: 1100px;
+    margin: 48px auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.12);
   }
-  .hero h1 {
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    margin-bottom: 20px;
-  }
-  .hero p.subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--text-dim);
-    max-width: 640px;
-    margin: 0 auto 40px;
-    font-weight: 400;
-  }
-  .cta-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 12px 26px;
-    border-radius: 980px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  .btn:hover { transform: scale(1.03); opacity: 0.9; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-secondary { color: var(--accent); border: 1px solid var(--border); }
 
-  /* Section headings */
-  h2.headline {
-    font-size: clamp(2rem, 5vw, 3.2rem);
+  /* Sidebar */
+  aside {
+    background: var(--sidebar);
+    color: var(--sidebar-text);
+    padding: 48px 32px;
+  }
+  .avatar {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #7c5cff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; font-weight: 700;
+    margin-bottom: 24px;
+  }
+  aside h1 {
+    font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    text-align: center;
+    margin-bottom: 4px;
+  }
+  aside .role {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+  aside h2 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sidebar-dim);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  aside h2:first-of-type { margin-top: 0; }
+  .contact-list { list-style: none; font-size: 0.9rem; }
+  .contact-list li { margin-bottom: 10px; }
+  .contact-list a { color: var(--sidebar-text); text-decoration: none; }
+  .contact-list a:hover { color: var(--accent); }
+
+  .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 0.78rem;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--sidebar-text);
+    padding: 5px 11px;
+    border-radius: 999px;
+  }
+
+  .skill-block { margin-bottom: 18px; }
+  .skill-block .label {
+    display: flex; justify-content: space-between;
+    font-size: 0.85rem; margin-bottom: 6px; color: var(--sidebar-text);
+  }
+  .bar { height: 4px; background: #e2e3e6; border-radius: 4px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+
+  /* Main */
+  main { padding: 56px 48px; }
+  section { margin-bottom: 44px; }
+  section:last-child { margin-bottom: 0; }
+
+  h3.section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 700;
     margin-bottom: 16px;
   }
-  p.tagline {
-    text-align: center;
-    color: var(--text-dim);
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    max-width: 620px;
-    margin: 0 auto 64px;
-  }
 
-  /* Skills grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-  }
-  .card {
-    background: var(--bg);
+  .summary { font-size: 1.05rem; color: var(--text); max-width: 60ch; }
+
+  .entry { padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .entry:last-child { border-bottom: none; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .entry-head h4 { font-size: 1.05rem; font-weight: 600; }
+  .entry-head span { font-size: 0.8rem; color: var(--text-dim); white-space: nowrap; }
+  .entry p { color: var(--text-dim); font-size: 0.94rem; margin-top: 6px; }
+
+  .interests { display: flex; flex-wrap: wrap; gap: 10px; }
+  .interests .pill {
+    background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 32px 28px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    color: var(--text);
   }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  }
-  .card h3 {
-    font-size: 0.78rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .card p { font-size: 1rem; color: var(--text); }
-
-  /* Projects */
-  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-  .project {
-    background: var(--bg-alt);
-    border-radius: 22px;
-    padding: 36px 32px;
-  }
-  .project h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .project p { color: var(--text-dim); font-size: 1rem; }
-
-  /* Contact */
-  .contact { text-align: center; }
-  .contact .links { margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
   footer {
     text-align: center;
     color: var(--text-dim);
-    font-size: 0.85rem;
-    padding: 40px 24px;
-    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    padding: 28px 24px 0;
   }
 
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 760px) {
+    .page { grid-template-columns: 1fr; margin: 0; border-radius: 0; }
+    aside { padding: 40px 24px; }
+    main { padding: 40px 24px; }
+  }
 
-  @media (max-width: 600px) {
-    .section { padding: 80px 20px; }
-    .hero { padding: 100px 20px 80px; }
-    p.tagline { margin-bottom: 40px; }
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; }
   }
 </style>
 </head>
 <body>
 
-  <section class="hero">
-    <p class="eyebrow reveal">Byron González Calquín</p>
-    <h1 class="reveal">Full Stack Developer.<br>Construido para escalar.</h1>
-    <p class="subtitle reveal">Del backend al frontend, de la base de datos a la nube. Python, React y AWS trabajando juntos.</p>
-    <div class="cta-row reveal">
-      <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-      <a class="btn btn-secondary" href="#contacto">Contactar</a>
-    </div>
-  </section>
+<div class="page">
+  <aside>
+    <div class="avatar">BG</div>
+    <h1>Byron González Calquín</h1>
+    <p class="role">Full Stack Developer</p>
 
-  <section class="section section-alt">
-    <div class="inner">
-      <h2 class="headline reveal">Stack técnico.</h2>
-      <p class="tagline reveal">Las herramientas con las que diseño, construyo y despliego.</p>
-      <div class="grid">
-        <div class="card reveal"><h3>Backend</h3><p>Python (FastAPI), PHP, Node.js</p></div>
-        <div class="card reveal"><h3>Frontend</h3><p>React, HTML5, CSS3</p></div>
-        <div class="card reveal"><h3>Mobile</h3><p>Capacitor, Flutter, iOS/Android</p></div>
-        <div class="card reveal"><h3>Cloud &amp; DevOps</h3><p>AWS (EC2, ALB, Auto Scaling), Docker</p></div>
-        <div class="card reveal"><h3>Datos</h3><p>SQL Server, MySQL, Power BI, Pandas</p></div>
-        <div class="card reveal"><h3>IA</h3><p>Integración con OpenAI y Gemini APIs</p></div>
+    <h2>Contacto</h2>
+    <ul class="contact-list">
+      <li>📍 Santiago, Chile</li>
+      <li><a href="mailto:byrongonzalez.calquin@gmail.com">✉ byrongonzalez.calquin@gmail.com</a></li>
+      <li><a href="https://github.com/perroBlanco0">🔗 GitHub</a></li>
+      <li><a href="https://linkedin.com/in/byron-gonz%C3%A1lez-4606151ab/">💼 LinkedIn</a></li>
+    </ul>
+
+    <h2>Lenguajes</h2>
+    <div class="tag-group">
+      <span class="tag">Python</span>
+      <span class="tag">PHP</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Java</span>
+      <span class="tag">SQL</span>
+    </div>
+
+    <h2>Nivel técnico</h2>
+    <div class="skill-block">
+      <div class="label"><span>Backend / APIs</span><span>90%</span></div>
+      <div class="bar"><span style="width:90%"></span></div>
+    </div>
+    <div class="skill-block">
+      <div class="label"><span>Cloud (AWS)</span><span>80%</span></div>
+      <div class="bar"><span style="width:80%"></span></div>
+    </div>
+    <div class="skill-block">
+      <div class="label"><span>Frontend (React)</span><span>75%</span></div>
+      <div class="bar"><span style="width:75%"></span></div>
+    </div>
+    <div class="skill-block">
+      <div class="label"><span>Datos / BI</span><span>70%</span></div>
+      <div class="bar"><span style="width:70%"></span></div>
+    </div>
+  </aside>
+
+  <main>
+    <section>
+      <h3 class="section-title">Perfil</h3>
+      <p class="summary">Desarrollador full stack especializado en desarrollo end-to-end: APIs backend, interfaces frontend, arquitectura de bases de datos, infraestructura cloud y despliegue mobile. Actualmente profundizando en arquitectura cloud e integración de IA aplicada.</p>
+    </section>
+
+    <section>
+      <h3 class="section-title">Stack técnico</h3>
+      <div class="entry">
+        <div class="entry-head"><h4>Backend &amp; APIs</h4></div>
+        <p>FastAPI, Uvicorn, Gunicorn, Node.js, Composer</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="proyectos">
-    <div class="inner">
-      <h2 class="headline reveal">Proyectos destacados.</h2>
-      <p class="tagline reveal">Trabajo real, resultados medibles.</p>
-      <div class="projects">
-        <div class="project reveal">
-          <h3>LLM Context Builder</h3>
-          <p>Extensión de VS Code publicada en el Marketplace que convierte archivos en contextos Markdown limpios para herramientas de IA.</p>
-        </div>
-        <div class="project reveal">
-          <h3>Arquitecturas AWS</h3>
-          <p>Monolitos escalables, aplicaciones serverless y sistemas de mensajería (SNS/SQS).</p>
-        </div>
-        <div class="project reveal">
-          <h3>Dashboards BI</h3>
-          <p>Analítica con Power BI sobre pipelines de datos en SQL Server.</p>
-        </div>
-        <div class="project reveal">
-          <h3>Extensión de Chrome</h3>
-          <p>Agente de análisis visual con IA e integración con Telegram.</p>
-        </div>
+      <div class="entry">
+        <div class="entry-head"><h4>Frontend &amp; Mobile</h4></div>
+        <p>React, HTML5, CSS3, Capacitor, Android, iOS, Flutter (en aprendizaje)</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section section-alt contact" id="contacto">
-    <div class="inner-narrow">
-      <h2 class="headline reveal">Hablemos.</h2>
-      <p class="tagline reveal">Siempre abierto a nuevos proyectos y colaboraciones.</p>
-      <div class="links reveal">
-        <a class="btn btn-primary" href="mailto:byrongonzalez.calquin@gmail.com">Email</a>
-        <a class="btn btn-secondary" href="https://github.com/perroBlanco0">GitHub</a>
-        <a class="btn btn-secondary" href="#">LinkedIn</a>
+      <div class="entry">
+        <div class="entry-head"><h4>Cloud &amp; DevOps</h4></div>
+        <p>Docker, AWS (EC2, Load Balancing, Auto Scaling, CloudWatch), Git, GitHub Actions, Linux</p>
       </div>
-    </div>
-  </section>
+      <div class="entry">
+        <div class="entry-head"><h4>Datos &amp; BI</h4></div>
+        <p>Pandas, Power BI, SQL Server, MySQL, Stored Procedures</p>
+      </div>
+    </section>
 
-  <footer>
-    Santiago, Chile — &copy; 2026 Byron González Calquín
-  </footer>
+    <section>
+      <h3 class="section-title">Proyectos destacados</h3>
+      <div class="entry">
+        <div class="entry-head"><h4>Scalable Monolith on AWS</h4></div>
+        <p>Migración de arquitectura con load balancing, auto-scaling y monitoreo con CloudWatch bajo pruebas de carga tipo producción.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h4>LLM Context Builder</h4></div>
+        <p>Extensión de VS Code publicada en el Marketplace que convierte archivos en contextos Markdown para asistentes de IA.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h4>Cloud Messaging System</h4></div>
+        <p>Arquitectura asíncrona con SNS/SQS para mensajería desacoplada en la nube.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h4>Serverless Architecture Lab</h4></div>
+        <p>Implementación basada en AWS Lambda sobre AWS Academy Learner Lab.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h4>AI Proactive Agent</h4></div>
+        <p>Extensión de Chrome (Manifest V3) con visión computacional y comunicación vía bot de Telegram.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h4>Portfolio BI</h4></div>
+        <p>Dashboards en Power BI con pipeline de datos en SQL Server vía AWS (RDS/S3).</p>
+      </div>
+    </section>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+    <section>
+      <h3 class="section-title">Áreas de interés</h3>
+      <div class="interests">
+        <span class="pill">Arquitectura Cloud &amp; AWS</span>
+        <span class="pill">IA aplicada / LLMs</span>
+        <span class="pill">Modelado de bases de datos</span>
+        <span class="pill">Desarrollo mobile</span>
+        <span class="pill">Data pipelines &amp; BI</span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>&copy; 2026 Byron González Calquín</footer>
+
 </body>
 </html>
