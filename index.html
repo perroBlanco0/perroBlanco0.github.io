@@ -117,6 +117,19 @@
   .project-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.1); }
   .project-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
   .project-card p { color: var(--text-dim); font-size: 0.9rem; }
+  .client-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
 
   .interests { display: flex; flex-wrap: wrap; gap: 10px; }
   .interests .pill {
@@ -283,31 +296,56 @@
     </section>
 
     <section>
-      <h3 class="section-title">Proyectos destacados</h3>
+      <h3 class="section-title">Proyectos en producción</h3>
+      <p class="summary" style="margin-bottom:20px;">Desarrollo y mantengo soluciones SaaS con usuarios reales en ClickBI (Grupo Click), para clientes como Copec, Mercado Libre, Sura y Nuctech.</p>
       <div class="project-grid">
         <div class="project-card">
-          <h4>Scalable Monolith on AWS</h4>
-          <p>Migración de arquitectura con load balancing, auto-scaling y monitoreo con CloudWatch bajo pruebas de carga tipo producción.</p>
+          <span class="client-badge">ClickVisitas</span>
+          <h4>Control de accesos SaaS</h4>
+          <p>Sistema de control de accesos personalizable, integrable con hardware (Kantech, ZKTeco, Dahua) — visitas, QR de acceso, estacionamientos y notificaciones.</p>
         </div>
+        <div class="project-card">
+          <span class="client-badge">Mercado Libre</span>
+          <h4>Autogestión de estacionamientos</h4>
+          <p>App móvil de reservas para múltiples instalaciones, con apertura automática de barreras vía QR.</p>
+        </div>
+        <div class="project-card">
+          <span class="client-badge">Copec</span>
+          <h4>Safe CRM — Gestión de delitos y EDS</h4>
+          <p>CRM con captura de evidencias georreferenciadas, gestión de rondas y reportería avanzada para estaciones de servicio.</p>
+        </div>
+        <div class="project-card">
+          <span class="client-badge">Sura</span>
+          <h4>Reportes de accesos y aforo</h4>
+          <p>Dashboards en Power BI integrados con reconocimiento de patentes (LPR) y conteo de aforo por piso en tiempo real.</p>
+        </div>
+        <div class="project-card">
+          <span class="client-badge">Nuctech LATAM</span>
+          <h4>CRM comercial y técnico</h4>
+          <p>Gestor documental, cotizaciones y órdenes de trabajo para inspecciones técnicas.</p>
+        </div>
+        <div class="project-card">
+          <span class="client-badge">Grupo Click</span>
+          <h4>Click-GPT — Asistente IA interno</h4>
+          <p>Chat con respuesta contextual sobre la biblioteca técnica propia de la empresa (PDFs, imágenes, documentos).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-title">Proyectos personales</h3>
+      <div class="project-grid">
         <div class="project-card">
           <h4>LLM Context Builder</h4>
           <p>Extensión de VS Code publicada en el Marketplace que convierte archivos en contextos Markdown para asistentes de IA.</p>
-        </div>
-        <div class="project-card">
-          <h4>Cloud Messaging System</h4>
-          <p>Arquitectura asíncrona con SNS/SQS para mensajería desacoplada en la nube.</p>
-        </div>
-        <div class="project-card">
-          <h4>Serverless Architecture Lab</h4>
-          <p>Implementación basada en AWS Lambda sobre AWS Academy Learner Lab.</p>
         </div>
         <div class="project-card">
           <h4>AI Proactive Agent</h4>
           <p>Extensión de Chrome (Manifest V3) con visión computacional y comunicación vía bot de Telegram.</p>
         </div>
         <div class="project-card">
-          <h4>Portfolio BI</h4>
-          <p>Dashboards en Power BI con pipeline de datos en SQL Server vía AWS (RDS/S3).</p>
+          <h4>Serverless Architecture Lab</h4>
+          <p>Implementación basada en AWS Lambda sobre AWS Academy Learner Lab.</p>
         </div>
       </div>
     </section>
