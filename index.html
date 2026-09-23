@@ -44,11 +44,11 @@
   .avatar {
     width: 84px; height: 84px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #7c5cff);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; font-weight: 700;
     margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
   }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   aside h1 {
     font-size: 1.4rem;
     font-weight: 700;
@@ -133,6 +133,63 @@
     padding: 28px 24px 0;
   }
 
+  /* Carousel */
+  .carousel {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    background: #000;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .carousel-slide {
+    position: relative;
+    flex: 0 0 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .carousel-caption {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+  }
+  .carousel-dots {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .carousel-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.45);
+    cursor: pointer;
+    padding: 0;
+  }
+  .carousel-dot.active { background: #fff; width: 22px; border-radius: 5px; }
+
+  @media (max-width: 760px) {
+    .carousel-slide { aspect-ratio: 4 / 3; }
+  }
+
   @media (max-width: 760px) {
     .page { grid-template-columns: 1fr; margin: 0; border-radius: 0; }
     aside { padding: 40px 24px; }
@@ -149,7 +206,7 @@
 
 <div class="page">
   <aside>
-    <div class="avatar">BG</div>
+    <div class="avatar"><img src="assets/logo.png" alt="Logo perroBlanco0"></div>
     <h1>Byron González Calquín</h1>
     <p class="role">Full Stack Developer</p>
 
@@ -252,12 +309,84 @@
         <span class="pill">Modelado de bases de datos</span>
         <span class="pill">Desarrollo mobile</span>
         <span class="pill">Data pipelines &amp; BI</span>
+        <span class="pill">Calistenia 🤸</span>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-title">Comunidad &amp; eventos</h3>
+      <p class="summary" style="margin-bottom:20px;">Participo activamente en la comunidad tech: meetups, conferencias y charlas de AWS, IA y ciberseguridad.</p>
+      <div class="carousel" id="carousel">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="assets/interests/nerdearla.jpeg" alt="Nerdearla" loading="lazy">
+            <span class="carousel-caption">Nerdearla</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/interests/meetup-aws-js.jpeg" alt="Meetup AWS UG x JS Chile" loading="lazy">
+            <span class="carousel-caption">Meetup AWS UG x JS Chile</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/interests/wazuh.jpeg" alt="Evento Wazuh en Acción" loading="lazy">
+            <span class="carousel-caption">Wazuh en Acción</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/interests/cognition-1.jpeg" alt="Evento Cognition / Devin" loading="lazy">
+            <span class="carousel-caption">Comunidad Cognition AI</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/interests/meetup-charla.jpeg" alt="Charla comunidad tech" loading="lazy">
+            <span class="carousel-caption">Charlas &amp; meetups</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/interests/cognition-2.jpeg" alt="Grupo comunidad Cognition" loading="lazy">
+            <span class="carousel-caption">Comunidad Cognition AI</span>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carousel-dots"></div>
       </div>
     </section>
   </main>
 </div>
 
 <footer>&copy; 2026 Byron González Calquín</footer>
+
+<script>
+  (function () {
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const dotsWrap = document.getElementById('carousel-dots');
+    let index = 0;
+    let timer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', 'Ir a la imagen ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+
+    function next() { goTo(index + 1); }
+
+    function start() { timer = setInterval(next, 3800); }
+    function stop() { clearInterval(timer); }
+
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+
+    goTo(0);
+    start();
+  })();
+</script>
 
 </body>
 </html>
